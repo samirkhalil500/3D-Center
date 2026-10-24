@@ -1,1 +1,821 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Center | عالم الفخامة والابتكار في التصميم الداخلي والديكور</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        luxuryDark: '#0b0b0b',
+                        luxuryCard: '#141414',
+                        luxuryGold: '#d4af37',
+                        luxuryGoldHover: '#e6c555',
+                        luxuryGray: '#888888',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Tajawal', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Tajawal & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Tajawal', 'Inter', sans-serif;
+            background-color: #0b0b0b;
+            color: #f3f3f3;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #d4af37 0%, #fff2b2 50%, #aa820a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border {
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+        .gold-border:hover {
+            border-color: #d4af37;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0b0b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-luxuryDark text-gray-100 antialiased selection:bg-luxuryGold selection:text-black">
 
+    <!-- Toast Notification Modal / Message Box -->
+    <div id="toast" class="fixed bottom-5 left-5 z-50 transform translate-y-32 opacity-0 transition-all duration-300 bg-luxuryCard border border-luxuryGold px-6 py-4 rounded-xl shadow-2xl flex items-center space-x-3 space-x-reverse">
+        <i class="fa-solid fa-circle-check text-luxuryGold text-2xl"></i>
+        <div>
+            <h4 class="font-bold text-white text-sm">تم بنجاح</h4>
+            <p id="toast-message" class="text-xs text-luxuryGray">تم استلام طلبك وسنتواصل معك قريباً.</p>
+        </div>
+    </div>
+
+    <!-- Quick Floating WhatsApp / Call Buttons -->
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col space-y-3">
+        <a href="https://wa.me/201142954136" target="_blank" aria-label="WhatsApp" class="w-14 h-14 bg-green-600 hover:bg-green-500 text-white rounded-full flex items-center justify-center text-2xl shadow-2xl transition-transform hover:scale-110">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="tel:01142954136" aria-label="Call Us" class="w-14 h-14 bg-luxuryGold hover:bg-yellow-600 text-black rounded-full flex items-center justify-center text-xl shadow-2xl transition-transform hover:scale-110">
+            <i class="fa-solid fa-phone-volume"></i>
+        </a>
+    </div>
+
+    <!-- 1. Header & Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-luxuryDark/90 backdrop-blur-md border-b border-white/10 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-2 space-x-reverse group">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-luxuryGold to-yellow-700 flex items-center justify-center text-black font-black text-xl shadow-lg shadow-luxuryGold/20 group-hover:scale-105 transition-transform">
+                    3D
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-black tracking-wider text-white">3D <span class="text-luxuryGold">CENTER</span></span>
+                    <span class="text-[10px] text-luxuryGray tracking-widest uppercase">Interior & Architecture</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center space-x-8 space-x-reverse text-sm font-medium">
+                <a href="#hero" class="text-luxuryGold transition-colors">الرئيسية</a>
+                <a href="#about" class="text-gray-300 hover:text-luxuryGold transition-colors">من نحن</a>
+                <a href="#services" class="text-gray-300 hover:text-luxuryGold transition-colors">خدماتنا</a>
+                <a href="#portfolio" class="text-gray-300 hover:text-luxuryGold transition-colors">معرض الأعمال</a>
+                <a href="#why-us" class="text-gray-300 hover:text-luxuryGold transition-colors">لماذا تختارنا</a>
+                <a href="#testimonials" class="text-gray-300 hover:text-luxuryGold transition-colors">آراء العملاء</a>
+                <a href="#contact" class="text-gray-300 hover:text-luxuryGold transition-colors">اتصل بنا</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="hidden sm:flex items-center space-x-4 space-x-reverse">
+                <a href="tel:01142954136" class="flex items-center text-sm font-semibold text-gray-300 hover:text-luxuryGold transition-colors">
+                    <i class="fa-solid fa-phone-volume ml-2 text-luxuryGold"></i>
+                    <span dir="ltr">01142954136</span>
+                </a>
+                <a href="#contact" class="bg-gradient-to-r from-luxuryGold to-yellow-600 text-black font-bold px-5 py-2.5 rounded-full hover:shadow-lg hover:shadow-luxuryGold/30 transition-all transform hover:-translate-y-0.5 text-sm">
+                    استشارة مجانية
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="lg:hidden text-2xl text-luxuryGold focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-luxuryCard border-b border-white/10 px-6 py-6 space-y-4">
+            <a href="#hero" class="block text-white hover:text-luxuryGold font-medium">الرئيسية</a>
+            <a href="#about" class="block text-white hover:text-luxuryGold font-medium">من نحن</a>
+            <a href="#services" class="block text-white hover:text-luxuryGold font-medium">خدماتنا</a>
+            <a href="#portfolio" class="block text-white hover:text-luxuryGold font-medium">معرض الأعمال</a>
+            <a href="#why-us" class="block text-white hover:text-luxuryGold font-medium">لماذا تختارنا</a>
+            <a href="#testimonials" class="block text-white hover:text-luxuryGold font-medium">آراء العملاء</a>
+            <a href="#contact" class="block text-white hover:text-luxuryGold font-medium">اتصل بنا</a>
+            <div class="pt-4 border-t border-white/10 flex flex-col space-y-3">
+                <a href="tel:01142954136" class="flex items-center text-sm text-luxuryGold font-bold" dir="ltr">
+                    <i class="fa-solid fa-phone ml-2"></i> 01142954136
+                </a>
+                <a href="#contact" class="text-center bg-luxuryGold text-black font-bold py-2.5 rounded-full text-sm">
+                    احصل على استشارة مجانية
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Overlay & Glows -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-luxuryDark/60 via-luxuryDark/80 to-luxuryDark z-10"></div>
+            <!-- Unsplash High Quality Interior Image -->
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80" alt="Luxury Interior" class="w-full h-full object-cover opacity-45 scale-105">
+            <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-luxuryGold/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-1/4 left-1/4 w-96 h-96 bg-yellow-600/10 rounded-full blur-3xl pointer-events-none"></div>
+        </div>
+
+        <div class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20" data-aos="fade-up" data-aos-duration="1000">
+            <span class="inline-flex items-center space-x-2 space-x-reverse px-4 py-1.5 rounded-full bg-luxuryGold/10 border border-luxuryGold/30 text-luxuryGold text-xs sm:text-sm font-semibold mb-6">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>نحول أحلامك إلى واقع ثلاثي الأبعاد مذهل</span>
+            </span>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-tight sm:leading-none mb-6">
+                نصمم <span class="gold-gradient">الفخامة</span> ونبتكر <br class="hidden sm:inline">أجمل تفاصيل حياتك
+            </h1>
+            <p class="max-w-2xl mx-auto text-base sm:text-xl text-luxuryGray mb-10 leading-relaxed">
+                في <strong class="text-white font-bold">3D Center</strong>، ندمج الإبداع المعماري بالواقع الافتراضي ثلاثي الأبعاد (3D/VR) لترى مشروعك وتعيش تفاصيله قبل وضع حجر الأساس.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#contact" class="w-full sm:w-auto bg-gradient-to-r from-luxuryGold to-yellow-600 text-black font-extrabold px-8 py-4 rounded-full shadow-xl shadow-luxuryGold/20 hover:scale-105 transition-all text-center">
+                    احجز استشارتك المجانية الآن
+                </a>
+                <a href="#portfolio" class="w-full sm:w-auto bg-luxuryCard/80 hover:bg-luxuryCard border border-white/10 hover:border-luxuryGold text-white font-semibold px-8 py-4 rounded-full transition-all text-center">
+                    اكتشف أعمالنا الفاخرة
+                </a>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-12 border-t border-white/10 max-w-4xl mx-auto">
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <span class="block text-3xl sm:text-4xl font-black text-luxuryGold mb-1">+250</span>
+                    <span class="text-xs sm:text-sm text-luxuryGray">مشروع منجز بنجاح</span>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <span class="block text-3xl sm:text-4xl font-black text-luxuryGold mb-1">100%</span>
+                    <span class="text-xs sm:text-sm text-luxuryGray">دقة في التصاميم الثلاثية</span>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <span class="block text-3xl sm:text-4xl font-black text-luxuryGold mb-1">+12</span>
+                    <span class="text-xs sm:text-sm text-luxuryGray">سنوات خبرة واحترافية</span>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                    <span class="block text-3xl sm:text-4xl font-black text-luxuryGold mb-1">VIP</span>
+                    <span class="text-xs sm:text-sm text-luxuryGray">خدمة عملاء ودعم مستمر</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. About Us Section -->
+    <section id="about" class="py-24 bg-luxuryCard/40 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Images Grid (Unsplash High Quality) -->
+                <div class="lg:col-span-6 space-y-4" data-aos="fade-right">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-4">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Modern Living" class="rounded-2xl object-cover h-64 w-full border border-white/10 hover:border-luxuryGold transition-all">
+                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80" alt="Detailing" class="rounded-2xl object-cover h-44 w-full border border-white/10 hover:border-luxuryGold transition-all">
+                        </div>
+                        <div class="space-y-4 pt-8">
+                            <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=600&q=80" alt="Luxurious Interior" class="rounded-2xl object-cover h-44 w-full border border-white/10 hover:border-luxuryGold transition-all">
+                            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=600&q=80" alt="Architecture" class="rounded-2xl object-cover h-64 w-full border border-white/10 hover:border-luxuryGold transition-all">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="lg:col-span-6 space-y-6" data-aos="fade-left">
+                    <span class="text-luxuryGold font-semibold text-sm uppercase tracking-widest">من نحن - 3D Center</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white leading-tight">
+                        نلتقي حيث يلتقي <span class="gold-gradient">الخيال الهندسي</span> بالواقع المبهر
+                    </h2>
+                    <p class="text-luxuryGray leading-relaxed">
+                        نحن في <strong class="text-white">3D Center</strong> نؤمن بأن كل مساحة لها شخصيتها الفريدة. نسعى جاهدين لتحويل المساحات الفارغة إلى بيئات نابضة بالحياة تعكس ذوقك الرفيع. فريقنا يضم نخبة من المهندسين المعماريين ومصممي الديكور الداخلي المحترفين في مقرنا الرئيسي بالقاهرة.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <div class="flex items-start space-x-3 space-x-reverse bg-luxuryCard p-4 rounded-xl border border-white/5">
+                            <div class="text-luxuryGold text-xl mt-1"><i class="fa-solid fa-cube"></i></div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">تقنية الواقع الافتراضي 3D/VR</h4>
+                                <p class="text-xs text-luxuryGray mt-1">شاهد مشروعك كأنك تمشي فيه قبل التنفيذ الفعلي.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 space-x-reverse bg-luxuryCard p-4 rounded-xl border border-white/5">
+                            <div class="text-luxuryGold text-xl mt-1"><i class="fa-solid fa-gem"></i></div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">خامات فاخرة وحصرية</h4>
+                                <p class="text-xs text-luxuryGray mt-1">ننتقي أجود أنواع الخامات والتشطيبات العالمية.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-4">
+                        <a href="#services" class="inline-flex items-center text-luxuryGold font-bold hover:text-white transition-colors">
+                            <span>تعرف على خدماتنا المتكاملة</span>
+                            <i class="fa-solid fa-arrow-left mr-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Services Section -->
+    <section id="services" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <span class="text-luxuryGold font-semibold text-sm uppercase tracking-widest">خدماتنا الاحترافية</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white mt-2 mb-4">حلول هندسية متكاملة <span class="gold-gradient">تلبي تطلعاتك</span></h2>
+                <p class="text-luxuryGray text-sm sm:text-base">نقدم حزمة شاملة من الخدمات المصممة خصيصاً لتمنحك تجربة بناء وتشطيب فريدة من نوعها.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-luxuryCard rounded-2xl p-8 border gold-border transition-all duration-300 hover:-translate-y-2 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 rounded-xl bg-luxuryGold/10 flex items-center justify-center text-luxuryGold text-2xl mb-6 group-hover:bg-luxuryGold group-hover:text-black transition-colors">
+                        <i class="fa-solid fa-couch"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">التصميم الداخلي (Interior Design)</h3>
+                    <p class="text-luxuryGray text-sm leading-relaxed mb-6">
+                        تصاميم داخلية فاخرة للمنازل والفلل والمكاتب، تجمع بين الأناقة العصرية والراحة المطلقة لكل زاوية.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center text-xs font-bold text-luxuryGold group-hover:text-white transition-colors">
+                        <span>احجز هذه الخدمة</span>
+                        <i class="fa-solid fa-arrow-left mr-1"></i>
+                    </a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-luxuryCard rounded-2xl p-8 border gold-border transition-all duration-300 hover:-translate-y-2 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 rounded-xl bg-luxuryGold/10 flex items-center justify-center text-luxuryGold text-2xl mb-6 group-hover:bg-luxuryGold group-hover:text-black transition-colors">
+                        <i class="fa-solid fa-building-shield"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">التصميم الخارجي (Exterior & Facades)</h3>
+                    <p class="text-luxuryGray text-sm leading-relaxed mb-6">
+                        واجهات معمارية مبهرة تترك انطباعاً أولياً خالداً، مع مراعاة العوامل البيئية والجمالية.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center text-xs font-bold text-luxuryGold group-hover:text-white transition-colors">
+                        <span>احجز هذه الخدمة</span>
+                        <i class="fa-solid fa-arrow-left mr-1"></i>
+                    </a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-luxuryCard rounded-2xl p-8 border gold-border transition-all duration-300 hover:-translate-y-2 group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 rounded-xl bg-luxuryGold/10 flex items-center justify-center text-luxuryGold text-2xl mb-6 group-hover:bg-luxuryGold group-hover:text-black transition-colors">
+                        <i class="fa-solid fa-hammer"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">التنفيذ والتشطيب الفاخر</h3>
+                    <p class="text-luxuryGray text-sm leading-relaxed mb-6">
+                        نحول التصاميم إلى واقع على يد عمالة محترفة وإشراف هندسي صارم يضمن أعلى معايير الجودة.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center text-xs font-bold text-luxuryGold group-hover:text-white transition-colors">
+                        <span>احجز هذه الخدمة</span>
+                        <i class="fa-solid fa-arrow-left mr-1"></i>
+                    </a>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-luxuryCard rounded-2xl p-8 border gold-border transition-all duration-300 hover:-translate-y-2 group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-14 h-14 rounded-xl bg-luxuryGold/10 flex items-center justify-center text-luxuryGold text-2xl mb-6 group-hover:bg-luxuryGold group-hover:text-black transition-colors">
+                        <i class="fa-solid fa-vr-cardboard"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">التصاميم الثلاثية VR / 3D</h3>
+                    <p class="text-luxuryGray text-sm leading-relaxed mb-6">
+                        جولات افتراضية ثلاثية الأبعاد تتيح لك تفقد كل زاوية في مشروعك بدقة فائقة وواقعية مذهلة.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center text-xs font-bold text-luxuryGold group-hover:text-white transition-colors">
+                        <span>احجز هذه الخدمة</span>
+                        <i class="fa-solid fa-arrow-left mr-1"></i>
+                    </a>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-luxuryCard rounded-2xl p-8 border gold-border transition-all duration-300 hover:-translate-y-2 group" data-aos="fade-up" data-aos-delay="500">
+                    <div class="w-14 h-14 rounded-xl bg-luxuryGold/10 flex items-center justify-center text-luxuryGold text-2xl mb-6 group-hover:bg-luxuryGold group-hover:text-black transition-colors">
+                        <i class="fa-solid fa-compass-drafting"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">الاستشارات الهندسية</h3>
+                    <p class="text-luxuryGray text-sm leading-relaxed mb-6">
+                        استشارات متخصصة من خبراء الهندسة والديكور لمساعدتك في اتخاذ القرار الأمثل لمشروعك.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center text-xs font-bold text-luxuryGold group-hover:text-white transition-colors">
+                        <span>احجز هذه الخدمة</span>
+                        <i class="fa-solid fa-arrow-left mr-1"></i>
+                    </a>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="bg-luxuryCard rounded-2xl p-8 border gold-border transition-all duration-300 hover:-translate-y-2 group" data-aos="fade-up" data-aos-delay="600">
+                    <div class="w-14 h-14 rounded-xl bg-luxuryGold/10 flex items-center justify-center text-luxuryGold text-2xl mb-6 group-hover:bg-luxuryGold group-hover:text-black transition-colors">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">المشاريع التجارية والمعارض</h3>
+                    <p class="text-luxuryGray text-sm leading-relaxed mb-6">
+                        تصميم وتجهيز المحلات التجارية، المطاعم، والمكاتب الإدارية لجذب العملاء وتعزيز الهوية.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center text-xs font-bold text-luxuryGold group-hover:text-white transition-colors">
+                        <span>احجز هذه الخدمة</span>
+                        <i class="fa-solid fa-arrow-left mr-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Portfolio Section -->
+    <section id="portfolio" class="py-24 bg-luxuryCard/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up">
+                <span class="text-luxuryGold font-semibold text-sm uppercase tracking-widest">معرض الأعمال</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white mt-2 mb-4">نماذج من <span class="gold-gradient">إبداعاتنا</span></h2>
+                <p class="text-luxuryGray text-sm sm:text-base">تصفح أحدث مشاريعنا المنفذة بتصاميم تنافس الفخامة والعصرية.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-3 mb-12" data-aos="fade-up">
+                <button onclick="filterPortfolio('all')" class="filter-btn active px-6 py-2.5 rounded-full text-sm font-semibold bg-luxuryGold text-black transition-all">كل الأعمال</button>
+                <button onclick="filterPortfolio('interior')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold bg-luxuryCard text-gray-300 hover:text-white border border-white/10 transition-all">تصميم داخلي</button>
+                <button onclick="filterPortfolio('villas')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold bg-luxuryCard text-gray-300 hover:text-white border border-white/10 transition-all">فلل وشقق</button>
+                <button onclick="filterPortfolio('commercial')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold bg-luxuryCard text-gray-300 hover:text-white border border-white/10 transition-all">مشاريع تجارية</button>
+            </div>
+
+            <!-- Portfolio Grid (Using gorgeous Unsplash Interior images) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+                <!-- Item 1 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden border border-white/10 h-80" data-category="interior villas" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="Villa Living" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs text-luxuryGold font-semibold mb-1">فلل وشقق • تصميم داخلي</span>
+                        <h4 class="text-xl font-bold text-white mb-2">فيلا النخبة الملكية</h4>
+                        <p class="text-xs text-luxuryGray mb-4">تصميم عصري يدمج الرخام الإيطالي والإضاءة المخفية.</p>
+                        <button onclick="openProjectModal('فيلا النخبة الملكية', 'تصميم وتنفيد داخلي لفيلا سكنية بمساحة 800 متر مربع، مع استخدام أحدث صيحات الديكور المودرن والخامات الفاخرة.', 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80')" class="bg-luxuryGold text-black font-bold py-2 px-4 rounded-lg text-xs w-max hover:bg-white transition-colors">
+                            عرض التفاصيل
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden border border-white/10 h-80" data-category="commercial" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Commercial Office" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs text-luxuryGold font-semibold mb-1">مشاريع تجارية</span>
+                        <h4 class="text-xl font-bold text-white mb-2">مكتب 3D Center الإداري</h4>
+                        <p class="text-xs text-luxuryGray mb-4">تصميم مساحات عمل ذكية تعزز الإنتاجية والإبداع.</p>
+                        <button onclick="openProjectModal('مكتب 3D Center الإداري', 'تصميم داخلي تجاري لمقر شركة كبرى، يعكس الهوية البصرية للشركات بطابع عصري ومريح.', 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80')" class="bg-luxuryGold text-black font-bold py-2 px-4 rounded-lg text-xs w-max hover:bg-white transition-colors">
+                            عرض التفاصيل
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden border border-white/10 h-80" data-category="interior villas" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80" alt="Modern Bedroom" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs text-luxuryGold font-semibold mb-1">فلل وشقق</span>
+                        <h4 class="text-xl font-bold text-white mb-2">جناح النوم الماسي</h4>
+                        <p class="text-xs text-luxuryGray mb-4">مزيج من الألوان الهادئة والأقمشة المخملية الفاخرة.</p>
+                        <button onclick="openProjectModal('جناح النوم الماسي', 'تصميم خاص لغرفة نوم رئيسية مع غرفة ملابس ملحقة، مصممة بأعلى معايير الرفاهية.', 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80')" class="bg-luxuryGold text-black font-bold py-2 px-4 rounded-lg text-xs w-max hover:bg-white transition-colors">
+                            عرض التفاصيل
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden border border-white/10 h-80" data-category="commercial" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Restaurant" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs text-luxuryGold font-semibold mb-1">مشاريع تجارية</span>
+                        <h4 class="text-xl font-bold text-white mb-2">مطعم لوزان الفاخر</h4>
+                        <p class="text-xs text-luxuryGray mb-4">تصميم ديكور داخلي يخلق أجواء استثنائية للزوار.</p>
+                        <button onclick="openProjectModal('مطعم لوزان الفاخر', 'تصميم متكامل لمطعم راقٍ مع إضاءة مدروسة وأثاث مخصص.', 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80')" class="bg-luxuryGold text-black font-bold py-2 px-4 rounded-lg text-xs w-max hover:bg-white transition-colors">
+                            عرض التفاصيل
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden border border-white/10 h-80" data-category="interior" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Penthouse" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs text-luxuryGold font-semibold mb-1">تصميم داخلي</span>
+                        <h4 class="text-xl font-bold text-white mb-2">بنتهاوس الأفق</h4>
+                        <p class="text-xs text-luxuryGray mb-4">إطلالة بانورامية مع ديكورات مودرن أنيقة ومريحة.</p>
+                        <button onclick="openProjectModal('بنتهاوس الأفق', 'تصميم داخلي لبنتهاوس بطلات مذهلة وتوزيع هندسي ذكي للمساحات.', 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80')" class="bg-luxuryGold text-black font-bold py-2 px-4 rounded-lg text-xs w-max hover:bg-white transition-colors">
+                            عرض التفاصيل
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="portfolio-item group relative rounded-2xl overflow-hidden border border-white/10 h-80" data-category="villas" data-aos="fade-up" data-aos-delay="500">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Classic Villa" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs text-luxuryGold font-semibold mb-1">فلل وشقق</span>
+                        <h4 class="text-xl font-bold text-white mb-2">قصر الرويال</h4>
+                        <p class="text-xs text-luxuryGray mb-4">طراز نيوكلاسيك فاخر يعكس الفخامة الملكية الأصيلة.</p>
+                        <button onclick="openProjectModal('قصر الرويال', 'تصميم واجهات وتصميم داخلي بقصر ملكي بطراز نيوكلاسيك راقٍ.', 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80')" class="bg-luxuryGold text-black font-bold py-2 px-4 rounded-lg text-xs w-max hover:bg-white transition-colors">
+                            عرض التفاصيل
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Why Choose Us Section -->
+    <section id="why-us" class="py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <span class="text-luxuryGold font-semibold text-sm uppercase tracking-widest">لماذا تختارنا</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white mt-2 mb-4">مميزات تجعلنا <span class="gold-gradient">الخيار الأول</span></h2>
+                <p class="text-luxuryGray text-sm sm:text-base">نلتزم بمعايير عالمية تجعل رحلتك معنا ممتعة ومضمونة النتائج.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-luxuryCard p-8 rounded-2xl border gold-border text-center group hover:-translate-y-2 transition-all" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-luxuryGold/10 flex items-center justify-center text-luxuryGold text-2xl mb-6 group-hover:bg-luxuryGold group-hover:text-black transition-colors">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">دقة المواعيد</h3>
+                    <p class="text-luxuryGray text-xs sm:text-sm leading-relaxed">
+                        نلتزم بالجداول الزمنية بدقة تامة لتسليم مشروعك في الموعد المتفق عليه دون أي تأخير.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-luxuryCard p-8 rounded-2xl border gold-border text-center group hover:-translate-y-2 transition-all" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-luxuryGold/10 flex items-center justify-center text-luxuryGold text-2xl mb-6 group-hover:bg-luxuryGold group-hover:text-black transition-colors">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">تصاميم حصرية</h3>
+                    <p class="text-luxuryGray text-xs sm:text-sm leading-relaxed">
+                        كل تصميم نبتكره يتم خصيصاً ليناسب ذوقك الشخصي ولا يتكرر في مكان آخر لضمان تفردك.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-luxuryCard p-8 rounded-2xl border gold-border text-center group hover:-translate-y-2 transition-all" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-luxuryGold/10 flex items-center justify-center text-luxuryGold text-2xl mb-6 group-hover:bg-luxuryGold group-hover:text-black transition-colors">
+                        <i class="fa-solid fa-users-gear"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">فريق هندسي محترف</h3>
+                    <p class="text-luxuryGray text-xs sm:text-sm leading-relaxed">
+                        خبراء ومهندسون معتمدون يتابعون كل تفصيل بدقة هندسية وجمالية مذهلة.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-luxuryCard p-8 rounded-2xl border gold-border text-center group hover:-translate-y-2 transition-all" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-luxuryGold/10 flex items-center justify-center text-luxuryGold text-2xl mb-6 group-hover:bg-luxuryGold group-hover:text-black transition-colors">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">ضمان الجودة</h3>
+                    <p class="text-luxuryGray text-xs sm:text-sm leading-relaxed">
+                        نمنحك ضمانات شاملة على كافة أعمال التنفيذ والتشطيب لراحة بالك التامة.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Testimonials Section -->
+    <section id="testimonials" class="py-24 bg-luxuryCard/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <span class="text-luxuryGold font-semibold text-sm uppercase tracking-widest">آراء العملاء</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white mt-2 mb-4">ماذا يقول <span class="gold-gradient">عملاؤنا المميزون</span></h2>
+                <p class="text-luxuryGray text-sm sm:text-base">قصص نجاح ورضا نفخر بها من عملائنا الذين شاركناهم رحلة بناء مساحات أحلامهم.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-luxuryCard p-8 rounded-2xl border border-white/10 relative" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-luxuryGold text-3xl mb-4"><i class="fa-solid fa-quote-right"></i></div>
+                    <p class="text-luxuryGray text-sm leading-relaxed mb-6">
+                        "تجربة استثنائية مع 3D Center! تقنية الواقع الافتراضي أتاحت لي رؤية تفاصيل فيلتي قبل البدء بالتشطيب، والنتيجة كانت مطابقة تماماً بل وأجمل بكثير."
+                    </p>
+                    <div class="flex items-center space-x-4 space-x-reverse pt-4 border-t border-white/10">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="عميل" class="w-12 h-12 rounded-full object-cover border border-luxuryGold">
+                        <div>
+                            <h4 class="font-bold text-white text-sm">م. راشد المهندس</h4>
+                            <span class="text-xs text-luxuryGray">مالك فيلا بالقاهرة</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-luxuryCard p-8 rounded-2xl border border-white/10 relative" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-luxuryGold text-3xl mb-4"><i class="fa-solid fa-quote-right"></i></div>
+                    <p class="text-luxuryGray text-sm leading-relaxed mb-6">
+                        "الالتزام بالمواعيد وجودة التشطيبات كانت مذهلة حقاً. فريق محترف ومتعاون جداً، أنصح بالتعامل معهم لكل من يبحث عن الفخامة الحقيقية."
+                    </p>
+                    <div class="flex items-center space-x-4 space-x-reverse pt-4 border-t border-white/10">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="عميل" class="w-12 h-12 rounded-full object-cover border border-luxuryGold">
+                        <div>
+                            <h4 class="font-bold text-white text-sm">أحمد الشريف</h4>
+                            <span class="text-xs text-luxuryGray">مالك شقة دوبلكس</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-luxuryCard p-8 rounded-2xl border border-white/10 relative" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-luxuryGold text-3xl mb-4"><i class="fa-solid fa-quote-right"></i></div>
+                    <p class="text-luxuryGray text-sm leading-relaxed mb-6">
+                        "صمموا لي مقر شركتنا الجديد وكان الانطباع لدى عملائنا مذهلاً. التصميم الداخلي يجمع بين الاحترافية والفخامة العملية بشكل رائع."
+                    </p>
+                    <div class="flex items-center space-x-4 space-x-reverse pt-4 border-t border-white/10">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="عميل" class="w-12 h-12 rounded-full object-cover border border-luxuryGold">
+                        <div>
+                            <h4 class="font-bold text-white text-sm">محمد عبد الله</h4>
+                            <span class="text-xs text-luxuryGray">رئيس تنفيذي لشركة تجارية</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Contact Section -->
+    <section id="contact" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Info & Details -->
+                <div class="lg:col-span-5 space-y-6" data-aos="fade-right">
+                    <span class="text-luxuryGold font-semibold text-sm uppercase tracking-widest">تواصل معنا</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white leading-tight">
+                        دعنا نبدأ في <span class="gold-gradient">تصميم مشروعك</span> القادم
+                    </h2>
+                    <p class="text-luxuryGray text-sm leading-relaxed">
+                        املأ النموذج وسيتواصل معك أحد خبرائنا المهندسين في أسرع وقت لتقديم الاستشارة الأولية ومناقشة أفكارك.
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-center space-x-4 space-x-reverse">
+                            <div class="w-12 h-12 rounded-xl bg-luxuryCard border border-white/10 flex items-center justify-center text-luxuryGold text-lg shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">العنوان الرئيسي</h4>
+                                <p class="text-luxuryGray text-xs">شارع المصطفى، مؤسسة الزكاة، القاهرة، مصر</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 space-x-reverse">
+                            <div class="w-12 h-12 rounded-xl bg-luxuryCard border border-white/10 flex items-center justify-center text-luxuryGold text-lg shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">اتصل بنا مباشرة / واتساب</h4>
+                                <p class="text-luxuryGray text-xs" dir="ltr">01142954136</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 space-x-reverse">
+                            <div class="w-12 h-12 rounded-xl bg-luxuryCard border border-white/10 flex items-center justify-center text-luxuryGold text-lg shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">البريد الإلكتروني</h4>
+                                <p class="text-luxuryGray text-xs">info@3dcenter-decor.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Icons -->
+                    <div class="flex items-center space-x-4 space-x-reverse pt-4">
+                        <a href="https://wa.me/201142954136" target="_blank" class="w-10 h-10 rounded-full bg-luxuryCard border border-white/10 flex items-center justify-center text-luxuryGold hover:bg-luxuryGold hover:text-black transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-luxuryCard border border-white/10 flex items-center justify-center text-luxuryGold hover:bg-luxuryGold hover:text-black transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-luxuryCard border border-white/10 flex items-center justify-center text-luxuryGold hover:bg-luxuryGold hover:text-black transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-luxuryCard border border-white/10 flex items-center justify-center text-luxuryGold hover:bg-luxuryGold hover:text-black transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Form Box -->
+                <div class="lg:col-span-7 bg-luxuryCard p-8 sm:p-10 rounded-2xl border gold-border shadow-2xl" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold text-white mb-6">طلب استشارة أو مشروع جديد</h3>
+                    <form id="consultation-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-luxuryGray mb-2">الاسم الكريم</label>
+                                <input type="text" required placeholder="أدخل اسمك الكامل" class="w-full bg-luxuryDark border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-luxuryGold transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-luxuryGray mb-2">رقم الهاتف</label>
+                                <input type="tel" required placeholder="01142954136" class="w-full bg-luxuryDark border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-luxuryGold transition-colors">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-luxuryGray mb-2">نوع الخدمة المطلوبة</label>
+                            <select class="w-full bg-luxuryDark border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-luxuryGold transition-colors">
+                                <option>التصميم الداخلي (Interior Design)</option>
+                                <option>التصميم الخارجي والواجهات</option>
+                                <option>التنفيذ والتشطيب الفاخر</option>
+                                <option>التصاميم الثلاثية VR / 3D</option>
+                                <option>الاستشارات الهندسية</option>
+                                <option>المشاريع التجارية</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-luxuryGray mb-2">تفاصيل الرسالة أو المشروع</label>
+                            <textarea rows="4" required placeholder="اكتب نبذة عن مشروعك أو المساحة المراد تصميمها..." class="w-full bg-luxuryDark border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-luxuryGold transition-colors"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-gradient-to-r from-luxuryGold to-yellow-600 text-black font-extrabold py-4 rounded-xl shadow-lg shadow-luxuryGold/20 hover:scale-[1.01] transition-transform text-sm">
+                            إرسال الطلب الآن
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Footer -->
+    <footer class="bg-luxuryCard border-t border-white/10 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+                <!-- Col 1: Brand -->
+                <div class="lg:col-span-2 space-y-4">
+                    <a href="#" class="flex items-center space-x-2 space-x-reverse">
+                        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-luxuryGold to-yellow-700 flex items-center justify-center text-black font-black text-lg">
+                            3D
+                        </div>
+                        <span class="text-lg font-black tracking-wider text-white">3D <span class="text-luxuryGold">CENTER</span></span>
+                    </a>
+                    <p class="text-luxuryGray text-xs sm:text-sm leading-relaxed max-w-sm">
+                        المكتب الرائد في تصميم الديكور الداخلي والحلول الهندسية ثلاثية الأبعاد. شارع المصطفى، مؤسسة الزكاة، القاهرة.
+                    </p>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2 text-xs sm:text-sm">
+                        <li><a href="#about" class="text-luxuryGray hover:text-luxuryGold transition-colors">من نحن</a></li>
+                        <li><a href="#services" class="text-luxuryGray hover:text-luxuryGold transition-colors">خدماتنا</a></li>
+                        <li><a href="#portfolio" class="text-luxuryGray hover:text-luxuryGold transition-colors">معرض الأعمال</a></li>
+                        <li><a href="#why-us" class="text-luxuryGray hover:text-luxuryGold transition-colors">لماذا تختارنا</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Services -->
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4">خدماتنا</h4>
+                    <ul class="space-y-2 text-xs sm:text-sm">
+                        <li><a href="#services" class="text-luxuryGray hover:text-luxuryGold transition-colors">التصميم الداخلي</a></li>
+                        <li><a href="#services" class="text-luxuryGray hover:text-luxuryGold transition-colors">التصميم الخارجي</a></li>
+                        <li><a href="#services" class="text-luxuryGray hover:text-luxuryGold transition-colors">التنفيذ والتشطيب</a></li>
+                        <li><a href="#services" class="text-luxuryGray hover:text-luxuryGold transition-colors">الواقع الافتراضي VR</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Newsletter -->
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4">النشرة الإخبارية</h4>
+                    <p class="text-luxuryGray text-xs mb-3">اشترك ليصلك كل جديد في عالم الديكور.</p>
+                    <form onsubmit="handleNewsletter(event)" class="space-y-2">
+                        <input type="email" required placeholder="بريدك الإلكتروني" class="w-full bg-luxuryDark border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-luxuryGold">
+                        <button type="submit" class="w-full bg-luxuryGold text-black font-bold py-2 rounded-lg text-xs hover:bg-white transition-colors">اشتراك</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-luxuryGray">
+                <p>جميع الحقوق محفوظة &copy; 2026 3D Center للديكور والتصميم الداخلي.</p>
+                <div class="flex space-x-6 space-x-reverse mt-4 sm:mt-0">
+                    <a href="#" class="hover:text-luxuryGold transition-colors">سياسة الخصوصية</a>
+                    <a href="#" class="hover:text-luxuryGold transition-colors">الشروط والأحكام</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-luxuryCard border border-luxuryGold rounded-2xl max-w-xl w-full p-6 relative" data-aos="zoom-in">
+            <button onclick="closeProjectModal()" class="absolute top-4 left-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img id="modal-img" src="" alt="Project" class="w-full h-64 object-cover rounded-xl mb-4 border border-white/10">
+            <h3 id="modal-title" class="text-2xl font-bold text-white mb-2"></h3>
+            <p id="modal-desc" class="text-luxuryGray text-sm leading-relaxed mb-6"></p>
+            <div class="flex justify-end">
+                <a href="#contact" onclick="closeProjectModal()" class="bg-luxuryGold text-black font-bold px-6 py-2.5 rounded-xl text-sm">
+                    اطلب تصميماً مشابهاً
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            duration: 800,
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Portfolio Filtering Logic
+        function filterPortfolio(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-luxuryGold', 'text-black');
+                btn.classList.add('bg-luxuryCard', 'text-gray-300');
+            });
+            event.target.classList.remove('bg-luxuryCard', 'text-gray-300');
+            event.target.classList.add('bg-luxuryGold', 'text-black');
+
+            const items = document.querySelectorAll('.portfolio-item');
+            items.forEach(item => {
+                const itemCategories = item.getAttribute('data-category');
+                if (category === 'all' || itemCategories.includes(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Modal Logic
+        function openProjectModal(title, desc, img) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-desc').innerText = desc;
+            document.getElementById('modal-img').src = img;
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        // Form Submit Simulation
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            showToast("تم إرسال استشارتك بنجاح وسيتواصل معك الفريق الهندسي خلال ساعتين.");
+            e.target.reset();
+        }
+
+        function handleNewsletter(e) {
+            e.preventDefault();
+            showToast("تم اشتراكك في النشرة الإخبارية بنجاح.");
+            e.target.reset();
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = message;
+            toast.classList.remove('translate-y-32', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-32', 'opacity-0');
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
